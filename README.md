@@ -1,14 +1,12 @@
 # Laboratório11 - Criação de tabela DynamoDB e operação CRUD com Python
 Curso: AWS Developer /  Escola da Nuvem
 
-🎯 Objetivos Projeto
-Este laboratório apresenta o passo a passo completo para criar uma aplicação serverless que
-utiliza o Amazon DynamoDB como banco de dados e o AWS Lambda para executar
-operações CRUD (Create, Read, Update e Delete) com integração via API Gateway e
-interface web hospedada no Amazon S3. O aluno também configura monitoramento
-com o Amazon CloudWatch.
+🎯**Objetivos do Projeto**
 
-Passos para Conclusão do Laboratório:
+Este laboratório apresenta o passo a passo completo para criar uma aplicação serverless que utiliza o Amazon DynamoDB como banco de dados e o AWS Lambda para executar
+operações CRUD (Create, Read, Update e Delete) com integração via API Gateway e interface web hospedada no Amazon S3. O aluno também configura monitoramento com o Amazon CloudWatch.
+
+**Passos para Conclusão do Laboratório:**
 
 - Criar uma role IAM com permissões adequadas para Lambda e DynamoDB;
 - Criar uma tabela no DynamoDB;
@@ -25,12 +23,9 @@ Passos para Conclusão do Laboratório:
 Imagem1- Exemplo do print a ser enviado.
 
 📊 **Laboratório - Criação de tabela DynamoDB e operação CRUD com Python**<br>
-Resumo
-
-Este laboratório guiado apresenta o passo a passo completo para criar uma aplicação serverless que utiliza o Amazon DynamoDB como banco de dados e o AWS Lambda para executar operações CRUD (Create, Read, Update e Delete) com integração via API Gateway e interface web hospedada no Amazon S3. O aluno também configura monitoramento com o Amazon CloudWatch.
-
-Observação: A interface do Console de Gerenciamento da AWS pode sofrer pequenas alterações visuais ao longo do tempo, mas os conceitos e a localização geral dos serviços permanecem consistentes. As instruções neste resumo seguem a estrutura geral das funcionalidades.
-
+Resumo:<br>
+Este laboratório guiado apresenta o passo a passo completo para criar uma aplicação serverless que utiliza o Amazon DynamoDB como banco de dados e o AWS Lambda para executar operações CRUD (Create, Read, Update e Delete) com integração via API Gateway e interface web hospedada no Amazon S3. O aluno também configura monitoramento com o Amazon CloudWatch.<br>
+Observação: A interface do Console de Gerenciamento da AWS pode sofrer pequenas alterações visuais ao longo do tempo, mas os conceitos e a localização geral dos serviços permanecem consistentes. As instruções neste resumo seguem a estrutura geral das funcionalidades.<br>
 🌎**Objetivos do laboratório**
 
 Este laboratório ensina como:<br>
