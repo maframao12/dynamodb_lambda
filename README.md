@@ -62,20 +62,28 @@ Os arquivos necessários para execução deste laboratório (frontend e função
 
 1.Acesse o Console de Gerenciamento da AWS e navegue até o serviço IAM.<br>
 2. No painel de navegação esquerdo, localize "Roles (Funções)" e clique em "Criar perfil".<br>
+![Screenshot_1](https://github.com/user-attachments/assets/97b743bf-a49d-4c7e-8ce6-acfa7c59f8f3)
 3. Em "Tipo de entidade confiável", deixe marcada a caixa "Serviço da AWS". Role para baixo e, em "Caso de uso", selecione "Lambda". Clique em "Próximo".<br>
 4. Em "Adicionar permissões", pesquise pelas policies:<br>
             AWSLambdaBasicExecutionRole<br>
             AmazonDynamoDBFullAccess<br>
-   Adicione-as e depois clique em "Próximo".<br>
+  ![image](https://github.com/user-attachments/assets/5765d541-1374-494f-bfc3-4e323d16fbdf)<br>
+  Adicione-as e depois clique em "Próximo".<br>
+
+
 5. Em "Nome do perfil", digite RoleCrud-seunome e clique em "Criar perfil".<br><br>
+![Screenshot_2](https://github.com/user-attachments/assets/78038be8-cccb-4dc9-a847-264606c9cc6a)
+
 🛠**Passo 2: Criação de tabela no Dynamo**
 
 1.Acesse o Console de Gerenciamento da AWS e navegue até o serviço DynamoDB.<br>
 2. Clique em "Criar tabela".<br>
 3. Digite o nome da tabela: Produtos-seunome.<br>
 4. No campo "Chave de partição", digite id. Ao lado, deixe selecionado "String".<br>
-5. Não altere mais nenhuma configuração nesta seção e clique em "Criar tabela".<br>
-6. Salve o nome da sua tabela em um bloco de notas para referência futura.<br>
+![image](https://github.com/user-attachments/assets/419b03e6-6313-4118-a967-b0c27ea09709)
+
+5. Não altere mais nenhuma configuração nesta seção e clique em **"Criar tabela"**.<br>
+6. **Salve** o nome da sua tabela em um bloco de notas para referência futura.<br>
 
 🛠**Passo 3: Criação da Função no Lambda**
 
@@ -84,13 +92,18 @@ Os arquivos necessários para execução deste laboratório (frontend e função
 3. Selecione "Criar do zero".<br>
 4. Em "Nome da função", digite LambdaCrud-seunome.<br>
 5. No campo "Tempo de execução", selecione "Python 3.12".<br>
+![image](https://github.com/user-attachments/assets/821d564b-77fc-4b9f-ba9a-18b9e89dda2f)
+
 6. Em "Alterar a função de execução padrão", selecione "Usar uma função existente".<br>
 7. No campo abaixo, em "Função existente", procure pela função que você criou no passo 1 (RoleCrud-seunome). Marque-a e depois clique em "Criar função".<br>
+![image](https://github.com/user-attachments/assets/5a7006f7-ed0b-4440-94e5-ead8125ab2d1)
+
 8. Na aba "Código", você fará o upload do arquivo CRUD.zip. Clique em "Fazer upload". Selecione o arquivo e clique em "Salvar".<br>
 9. Depois, selecione o arquivo já importado (CRUD.py) no editor de código.<br>
 10. Role para baixo e procure pela seção "Configurações de tempo de execução". Clique em "Editar".<br>
 11. No campo "Handler" (Manipulador), apague o nome lambda_function.lambda_handler e digite CRUD.lambda_handler. Clique em "Salvar".
 12. Volte para a aba "Código". Dentro do código importado (CRUD.py), localize a linha similar a table = dynamodb.Table(‘<sua tabela dynamodb>’) (geralmente na linha 7, mas pode variar). Apague <sua tabela dynamodb> e digite o nome exato da sua tabela que você salvou no bloco de notas (do Passo 2).
+    ![image](https://github.com/user-attachments/assets/b396c40c-ab56-4c29-9016-12ad43f303f0)
     
 **Observação:** Lembre-se de apagar os símbolos < > ao digitar o nome da sua tabela. <br>
 13. Exemplo antes da alteração:<br>
@@ -100,6 +113,8 @@ Os arquivos necessários para execução deste laboratório (frontend e função
 17. Clique em Editar.<br>
 18. Altere o campo Memória para 256 MB.<br>
 19. Altere o campo Tempo limite para 10 segundos.<br>
+![image](https://github.com/user-attachments/assets/d7aa4aba-7d82-4e06-96ee-b412923afdfd)
+
 20. Depois clique em Salvar.<br>
 
 🛠**Passo 4: Criação do API Gateway**
@@ -110,11 +125,15 @@ Os arquivos necessários para execução deste laboratório (frontend e função
 4. Clique em "Adicionar integração".<br>
 5. Selecione "Lambda".<br>
 6. No campo "Função do Lambda", selecione a função criada no passo 3 (LambdaCrud-seunome).<br>
+![image](https://github.com/user-attachments/assets/fc8c2519-37b7-42d9-8f33-8459f2e2467d)
+
 7. Clique em "Avançar".<br>
 8. Na tela "Configurar rotas", você precisará adicionar 5 rotas. Clique no botão "Adicionar rota" para cada uma.<br>
 9. Para cada rota adicionada, digite as informações nos campos "Método" e "Caminho do recurso", conforme especificado na sua documentação ou imagem de referência (já que os métodos e caminhos específicos não foram listados no texto fornecido), conforme mostrado na imagem de referência. abaixo:<br>
 10.Em seguida, no campo Destino da integração, selecione a função Lambda que você criou no passo 3 (LambdaCrud-seunome), conforme mostrado na imagem de referência. abaixo:<br>
 11.Depois clique em **Avançar**.<br>
+![image](https://github.com/user-attachments/assets/793049e2-47bc-4965-9e99-46e0f7a2f791)
+
 12. Em Configurar estágios, digite: prod.<br>
 13. Deixe marcada a caixa Implantação automática.<br>
 14. Clique em Avançar.<br>
@@ -123,6 +142,8 @@ Os arquivos necessários para execução deste laboratório (frontend e função
 17. No painel de navegação esquerdo, clique em Deploy.<br>
 18. Em seguida, clique em Stages.<br>
 19. Selecione o estágio prod.<br>
+]![image](https://github.com/user-attachments/assets/5eda8b93-7f18-452d-8511-8f8118a019b8)
+
 20. Copie a URL “Invocar URL”<br>
 21. Abra o arquivo script.js.<br>
 22.Localize o trecho no código onde a URL da API deve ser inserida "const API_URL".<br>
@@ -135,6 +156,8 @@ Os arquivos necessários para execução deste laboratório (frontend e função
 1.Acesse o Console de Gerenciamento da AWS e navegue até o serviço S3. Clique em "Criar bucket".<br>
 2. Digite o nome do seu bucket: website-seunome.<br>
 3. Mantenha as demais configurações padrão e clique em "Criar bucket".<br>
+![image](https://github.com/user-attachments/assets/1e95951c-3d69-40bf-95ed-49ff3f19d368)
+
 4. Após a criação, acesse o bucket que você acabou de criar.<br>
 5. Clique no botão "Carregar".<br>
 6. Clique no botão "Adicionar arquivos" e selecione os arquivos:<br>
@@ -142,10 +165,14 @@ Os arquivos necessários para execução deste laboratório (frontend e função
       style<br>
       index<br>
 7. Role para baixo e clique em "Carregar".<br>
+![image](https://github.com/user-attachments/assets/cf98bd86-3690-4a8f-b25a-c5acdd7e5ccc)
+
 8. Após finalizar o upload, clique em fechar.<br>
 9. Na tela do seu bucket, selecione a aba "Propriedades".<br>
 10. Role para baixo até encontrar a seção "Hospedagem de site estático". Clique em "Editar".<br>
 11. Marque a caixa para "Ativar" a hospedagem de site estático.<br>
+![image](https://github.com/user-attachments/assets/b866c6a3-3c96-47ac-a8c7-8ce6ac0edb80)
+
 12. No campo "Documento de índice", digite index.html.<br>
 13. Role para baixo e clique em "Salvar alterações".<br>
 14. De volta na seção "Hospedagem de site estático", no campo "Endpoint de site de bucket", copie a URL.<br>
@@ -153,6 +180,8 @@ Os arquivos necessários para execução deste laboratório (frontend e função
 16.Agora, vamos configurar as permissões para liberar o acesso ao site. Na aba Permissões do seu bucket, procure pela seção Bloquear acesso público (configurações de bucket).<br>
 17. Clique em Editar.<br>
 18. Em seguida, desmarque as duas últimas opções [conforme mostra a imagem abaixo].<br>
+![image](https://github.com/user-attachments/assets/2cadf6a2-81e6-4f2d-88af-955aede34143)
+
 19.Clique em Salvar alterações.<br>
 20. Será solicitado que você digite confirmar para confirmar a mudança. Digite confirmar e clique em Confirmar.<br>
 21.Role um pouco mais para baixo na aba Permissões até encontrar a seção Política do bucket.<br>
